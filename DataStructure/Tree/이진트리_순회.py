@@ -81,10 +81,10 @@ tree.insert(14)
 tree.insert(3)
 
 print('전위 순회 결과 -> ', end= ' ')
-tree.preorder()
+tree.preorder() # 10 5 2 1 4 3 8 6 9 12 11 15 13 14
 print()
 print('중위 순회 결과 -> ', end= ' ')
-tree.inorder()
+tree.inorder() # 1 2 3 4 5 6 8 9 10 11 12 13 14 15
 print()
 print('후위 순회 결과 -> ', end= ' ')
-tree.postorder()
+tree.postorder() # 1 3 4 2 6 9 8 5 11 14 13 15 12 10
