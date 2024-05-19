@@ -16,7 +16,7 @@ for g in graph:
     nodes.add(g[0])
     nodes.add(g[1])
 N= len(nodes) # 정점의 개수
-connected= set()
+connected= set() # visited 개념
 
 # 1. 임의의 노드(1번)부터 시작
 hq= [] # heapq: (간선 가중치, 1번 노드)
