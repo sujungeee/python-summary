@@ -32,7 +32,7 @@ for data in datas: # 우선순위 큐인 byMinHeap에 data들을 다 넣는다.
 for _ in range(len(byMinHeap)): # byMinHeap에서 하나씩 pop하면 가장 작은 요소가 pop되므로 result에 append하기
     result.append(heapq.heappop(byMinHeap))
 
-# 1-3. 최대힙을 사용한 오름차순 정렬(최대힙에서 뽑힌 수가 가장 크므로 배열 가장 끝쪽에 두기)
+# 1-2. 최대힙을 사용한 오름차순 정렬(최대힙에서 뽑힌 수가 가장 크므로 배열 가장 끝쪽에 두기)
 byMaxHeap= []
 heapq.heapify(byMaxHeap)
 result= [0 for _ in range(10)]
@@ -44,4 +44,33 @@ cnt= len(byMaxHeap)-1
 for _ in range(len(byMaxHeap)):
     tmp= heapq.heappop(byMaxHeap)
     result[cnt]= tmp[1]
+    cnt-=1
+
+# 2) 내림차순 정렬
+# 2-1. 최대힙을 사용: 하나씩 heappop하면 내림차순 정렬이 됨
+# 2-2. 최소힙을 사용: 루트 노드(최솟값)의 값을 배열의 끝으로 이동,
+#               남은 힙 재정렬하여 배열의 왼쪽으로(반대 방향으로) 값을 채워가기
+
+# 2-1. 최대힙을 사용한 내림차순 정렬
+byMaxHeap= []
+heapq.heapify(byMaxHeap)
+result= []
+
+for data in datas:
+    heapq.heappush(byMaxHeap, [-data, data])
+
+for i in range(10):
+    result.append(heapq.heappop(byMaxHeap)[1])
+
+# 2-2. 최소힙을 사용한 내림차순 정렬
+byMinHeap= []
+heapq.heapify(byMinHeap)
+result= [0 for _ in range(10)]
+
+for data in datas:
+    heapq.heappush(byMinHeap, data)
+
+cnt= len(byMinHeap)-1
+for i in range(10):
+    result[cnt]= heapq.heappop(byMinHeap)
     cnt-=1
